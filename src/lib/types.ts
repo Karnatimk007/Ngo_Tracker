@@ -55,6 +55,9 @@ export interface NGO {
   completedMilestones: number;
   rating: number;
   createdAt: Date;
+  image?: string;
+  location?: string;
+  donorCount?: number;
 }
 
 export interface FraudAlert {
