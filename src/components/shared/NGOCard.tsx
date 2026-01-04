@@ -1,4 +1,4 @@
-import { CheckCircle2, Star, Target, TrendingUp, MapPin, Users, Heart, ExternalLink } from 'lucide-react';
+import { CheckCircle2, Star, MapPin, Users, Heart, ExternalLink, TrendingUp } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -6,7 +6,7 @@ import { Progress } from '@/components/ui/progress';
 import { NGO } from '@/lib/types';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { toast } from '@/hooks/use-toast';
+import { toast } from 'sonner';
 
 interface NGOCardProps {
   ngo: NGO;
@@ -21,10 +21,10 @@ export function NGOCard({ ngo, featured = false }: NGOCardProps) {
     e.preventDefault();
     e.stopPropagation();
     setIsFavorite(!isFavorite);
-    toast({
-      title: isFavorite ? "Removed from favorites" : "Added to favorites",
-      description: isFavorite ? `${ngo.name} removed from your watchlist` : `${ngo.name} added to your watchlist`,
-    });
+    toast.success(
+      isFavorite ? "Removed from favorites" : "Added to favorites",
+      { description: isFavorite ? `${ngo.name} removed from your watchlist` : `${ngo.name} added to your watchlist` }
+    );
   };
 
   const getCategoryColor = (category: string) => {
